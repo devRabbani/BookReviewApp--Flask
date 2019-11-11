@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block anchor %}
+        {% if status == "Loggedout" %}
+            <a class="nav-link " href='{{ url_for('login') }}' xmlns="http://www.w3.org/1999/html">
+               Login
+            </a>
+        {% else %}
+            
+              <a class="nav-link nav-item " href='{{ url_for('logout') }}'>
+                Logout <strong>{{ user_email }}</strong>
+            </a>
+           
+        {% endif %}
+
+{% endblock %}
+
+{% block body %}
+    <br>
+<h1 class="container" style="display: block; margin-top: 20%;">Welcome to my book search App</h1>
+
+{% endblock %}

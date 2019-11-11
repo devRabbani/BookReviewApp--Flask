@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error Occurred!!</h4><br>
+            <p>
+                {{ error_message }}
+            </p>
+        </div>
+
+    {% elif message %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Registered!!</h4><br>
+            <p>
+                You've successfully registered.Please login to search.
+            </p>
+        </div>
+    {% endif %}
+
+    <div class="text-center">
+        {% if work =='Login' %}
+            <form class="form-signin" action="{{ url_for('search') }} " method="post">
+            <h1 style="margin-top: 20%;" class="h3 mb-3 font-weight-normal">Login</h1>
+
+        {% else %}
+            <form class="form-signin" action="{{ url_for('login') }}" method="post">
+            <h1 style="margin-top: 20%;" class="h3 mb-3 font-weight-normal">Register</h1>
+        {% endif %}
+
+
+            <label class="sr-only" for="inputEmail"> Email</label>
+            <input style="width: 50%;margin: 0 auto;"  type="email" id="inputEmail" class="form-control" placeholder="Your Email" required="" autofocus="" name="Email">
+            <label class="sr-only" for="inputPassword"> Password </label>
+            <input style="width: 50%;margin: 1% auto;"  id="inputPassword" class="form-control" placeholder="Your Password" required="" type="password" name="Password">
+            <button style="width: 20%;margin: 1% auto;" class="btn btn-lg btn-primary btn-block" type="submit"> {{ work }} </button>
+
+            {% if work=="Login" %}
+                <p> Wanna create a new account ?
+                    <a href="{{ url_for('register') }}">Register</a>
+                </p>
+            {% endif %}
+
+       </form>
+
+      </div>
+
+{% endblock %}
+

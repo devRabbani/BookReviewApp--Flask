@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'style.css') }}">
+
+        <title>Rabbani BOOKSEARCH</title>
+
+
+    </head>
+    <body style="background-color: #e5e5e5; font-family: sans-serif;text-align: center;">
+        <div style="background-color: #30b7ff;">
+          <nav class="navbar navbar-light container">
+                <a class="navbar-brand" style="font-family: serif;" href="{{ url_for('index') }}">Rabbani BOOKSEARCH</a>
+                <!-- items -->
+                    <ul class="navbar-nav ml-auto">
+      
+                            {% block anchor %}
+
+                            {% endblock %}
+                        
+                    </ul>
+        </nav>
+        </div>
+        
+        <div class="container container-fluid">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+
+
+
+    </body>
+</html>

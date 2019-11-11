@@ -1,0 +1,15 @@
+
+.navbar {
+    border-radius: 0;
+}
+a.navbar-brand {
+    font-family: 'Pacifico', cursive;
+}
+
+p {
+    text-align: justify;
+}
+
+form p {
+    text-align: center;
+}

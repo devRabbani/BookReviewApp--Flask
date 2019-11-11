@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block anchor %}
+    <a class="nav-link " href='{{ url_for('logout') }}'>
+        Logout <strong>{{ user_email }}</strong>
+    </a>
+{% endblock %}
+
+
+{% block body %}
+    <h1>Book Details:</h1>
+    <p>
+    ISBN: {{ book.isbn }}<br>
+    Title: {{ book.title }}<br>
+    Author: {{ book.author }}<br>
+    Year: {{ book.year }}<br>
+    </p>
+
+    <br>
+    <p>
+    Number of Ratings : {{ ratings_count }} <br>
+    Average Rating : {{ average_rating }}<br>
+    </p>
+
+    <h3>Reviews:</h3>
+    <div class="rating_local">
+        {% for user_email, review in users %}
+            <h5>{{ user_email }}</h5>
+            <strong>Rating: </strong> {{ review.rating }} <br>
+            <h6>Comment:</h6>
+            <p>
+                {{ review.comment }}
+            </p>
+        {% endfor %}
+
+    </div>
+
+    <br><h3>User Ratings</h3>
+    <form action = "{{ url_for('detail', book_id=book.id) }}" method="post">
+
+        <div class="form-group">
+            <label for="rating">Rating ( Out of 5 )</label>
+            <select class="form-control" name="rating" id="rating">
+                {%  for count in range(5) %}
+                    <option value="{{ count+1 }}">{{ count+1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" rows="5" name="comment"></textarea>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+
+    </form>
+
+{% endblock %}
